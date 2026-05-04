@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>예다움사랑채 | 객실안내</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="assets/logo.png" alt="surakzanjan.com 로고" /></a>
+      <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+      <nav class="main-nav">
+        <a href="index.html">홈</a>
+        <a href="rooms.html" class="active">객실안내</a>
+        <a href="facilities.html">부대시설 안내</a>
+        <a href="cafe.html">수락잔잔 카페</a>
+        <a href="breakfast.html">조식세트 안내</a>
+        <a href="reservation.html">객실예약</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">객실 안내</h1>
+      <p class="section-desc">하단 방 사진 6개 중 하나를 누르면 해당 객실이 큰 이미지로 표시됩니다<br/>이전/다음 버튼으로 객실의 여러 사진을 넘겨볼 수 있고, 이미지를 누르면 확대 팝업으로도 볼 수 있습니다.</p>
+
+      <div class="gallery-shell">
+        <div class="gallery-main room-slider" data-room-slider>
+          <button class="gallery-arrow prev" type="button" aria-label="이전 사진" data-gallery-prev>‹</button>
+          <img src="assets/room-main.svg" alt="다실" data-gallery-main />
+          <button class="gallery-arrow next" type="button" aria-label="다음 사진" data-gallery-next>›</button>
+          <div class="gallery-caption" data-gallery-caption>객실 사진</div>
+          <div class="gallery-counter" data-gallery-counter>1 / 10</div>
+        </div>
+
+        <div class="thumb-grid thumb-grid-seven">
+          <div class="thumb active" 
+               data-title="별실"
+               data-images='["assets/broom/broom1.jpg","assets/broom/broom2.jpg","assets/broom/broom3.jpg"]'>
+            <img src="assets/broom/broom2.jpg" alt="별실 썸네일" />
+            <span>별실</span>
+          </div>
+          <div class="thumb"
+               data-title="예실 1"
+               data-images='["assets/yesil1/yesil1.png","assets/yesil1/yesil2.png","assets/yesil1/yesil3.png"]'>
+            <img src="assets/yesil1/yesil1.png" alt="예실 1 썸네일" />
+            <span>예실 1</span>
+          </div>
+          <div class="thumb"
+               data-title="예실 2"
+               data-images='["assets/yesil2/yesil1.jpg","assets/yesil2/yesil2.jpg","assets/yesil2/yesil3.jpg","assets/yesil2/yesil4.jpg"]'>
+            <img src="assets/yesil2/yesil2.jpg" alt="예실 2 썸네일" />
+            <span>예실 2</span>
+          </div>
+          <div class="thumb"
+               data-title="다실"
+               data-images='["assets/dasil/dasil1.png","assets/dasil/dasil2.jpg","assets/dasil/dasil3.jpg","assets/dasil/dasil4.jpg","assets/dasil/dasil5.jpg","assets/dasil/dasil6.png"]'>
+            <img src="assets/dasil/dasil3.jpg" alt="다실 썸네일" />
+            <span>다실</span>
+          </div>
+          <div class="thumb"
+               data-title="움실 1"
+               data-images='["assets/umroom1/umroom1.jpg","assets/umroom1/umroom2.jpg","assets/umroom1/umroom3.jpg","assets/umroom1/umroom4.jpg","assets/umroom1/umroom5.jpg","assets/umroom1/umroom6.jpg"]'>
+            <img src="assets/umroom1/umroom1.jpg" alt="움실 1 썸네일" />
+            <span>움실 1</span>
+          </div>
+          <div class="thumb"
+               data-title="움실 2"
+               data-images='["assets/umroom2/umroom1.jpg","assets/umroom2/umroom2.jpg","assets/umroom2/umroom3.jpg","assets/umroom2/umroom4.jpg","assets/umroom2/umroom5.jpg","assets/umroom1/umroom6.jpg"]'>
+            <img src="assets/umroom2/umroom1.jpg" alt="움실 2 썸네일" />
+            <span>움실 2</span>
+          </div>
+          <div class="thumb"
+               data-title="펜션전경"
+               data-images='["assets/homemain1.jpg","assets/pension/view2.jpg","assets/pension/view3.jpg","assets/pension/view4.jpg","assets/pension/view5.jpg","assets/pension/view6.jpg","assets/pension/view7.jpg","assets/pension/view8.jpg","assets/pension/view9.jpg","assets/pension/view10.jpg"]'>
+            <img src="assets/homemain1.jpg" alt="펜션전경 썸네일" />
+            <span>펜션 전경</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <img src="" alt="확대 이미지" />
+      <div class="modal-body">
+        <h3 data-modal-title></h3>
+        <p data-modal-desc>객실 이미지를 크게 확인할 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">© 2026 surakzanjan. All rights reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

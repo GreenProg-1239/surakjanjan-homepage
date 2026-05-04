@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>예다움사랑채 | 관리자페이지</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="assets/logo.png" alt="surakzanjan.com 로고" /></a>
+      <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+      <nav class="main-nav">
+        <a href="index.html">홈</a>
+        <a href="rooms.html">객실안내</a>
+        <a href="facilities.html">부대시설 안내</a>
+        <a href="cafe.html">수락잔잔 카페</a>
+        <a href="breakfast.html">조식세트 안내</a>
+        <a href="reservation.html">객실예약</a>
+        <a href="admin.html" class="active">관리자페이지</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section admin-page">
+    <div class="container admin-layout" data-admin-page>
+      <section class="admin-hero-box">
+        <div>
+          <p class="admin-entry-eyebrow">reservation control panel</p>
+          <h1 class="section-title admin-title">예약 관리</h1>
+          <p class="section-desc admin-desc">로그인 후 날짜별 예약 목록을 확인하고, 예약확정 또는 예약취소 버튼으로 방 상태를 변경할 수 있습니다.</p>
+        </div>
+        <div class="admin-top-actions">
+          <span class="reservation-note-badge" data-admin-status>로그인 필요</span>
+          <button type="button" class="btn secondary-detail-btn" data-admin-logout hidden>로그아웃</button>
+        </div>
+      </section>
+
+      <section class="admin-filter-box" hidden data-admin-panel>
+        <div class="admin-filter-row">
+          <label>
+            <span>숙박일</span>
+            <input type="date" data-admin-date />
+          </label>
+          <label>
+            <span>상태</span>
+            <select data-admin-status-filter>
+              <option value="">전체</option>
+              <option value="pending">예약중</option>
+              <option value="confirmed">예약확정</option>
+              <option value="cancelled">예약취소</option>
+            </select>
+          </label>
+          <button type="button" class="btn" data-admin-search>조회하기</button>
+        </div>
+      </section>
+
+      <section class="admin-table-box" hidden data-admin-panel>
+        <div class="admin-table-head">
+          <h2>예약 목록</h2>
+          <p data-admin-summary>로그인 후 조회해 주세요.</p>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>예약번호</th>
+                <th>숙박일</th>
+                <th>객실명</th>
+                <th>예약자명</th>
+                <th>전화번호</th>
+                <th>입금자명</th>
+                <th>인원</th>
+                <th>최종금액</th>
+                <th>상태</th>
+                <th>신청시각</th>
+                <th>관리</th>
+              </tr>
+            </thead>
+            <tbody data-admin-table-body>
+              <tr><td colspan="11" class="admin-empty-cell">로그인 후 예약 데이터를 확인할 수 있습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="reservation-detail-modal admin-login-modal" data-admin-login-modal>
+    <div class="reservation-detail-backdrop"></div>
+    <div class="reservation-detail-dialog admin-login-dialog" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+      <span class="reservation-detail-chip">관리자 인증</span>
+      <h2 id="adminLoginTitle">관리자 로그인</h2>
+      <p class="reservation-detail-desc">아이디와 비밀번호를 입력하면 관리자페이지가 열립니다.</p>
+      <form class="reservation-form" data-admin-login-form>
+        <label>
+          <span>아이디</span>
+          <input type="text" name="adminId" required autocomplete="username" />
+        </label>
+        <label>
+          <span>비밀번호</span>
+          <input type="password" name="password" required autocomplete="current-password" />
+        </label>
+        <p class="reservation-form-message" data-admin-login-message></p>
+        <div class="reservation-detail-actions">
+          <a class="btn secondary-detail-btn" href="index.html">메인으로 돌아가기</a>
+          <button type="submit" class="btn">로그인</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>예다움사랑채 | 객실예약</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="assets/logo.png" alt="surakzanjan.com 로고" /></a>
+      <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+      <nav class="main-nav">
+        <a href="index.html">홈</a>
+        <a href="rooms.html">객실안내</a>
+        <a href="facilities.html">부대시설 안내</a>
+        <a href="cafe.html">수락잔잔 카페</a>
+        <a href="breakfast.html">조식세트 안내</a>
+        <a href="reservation.html" class="active">객실예약</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section reservation-page">
+    <div class="container reservation-layout">
+      <div class="reservation-intro">
+        <h1 class="section-title">객실 예약</h1>
+        <p class="section-desc">이제 예약 페이지는 예시 배열이 아니라 API를 통해 데이터베이스를 조회합니다. 달력은 월별 예약 가능 수를 서버에서 받아오고, 날짜를 누르면 해당 날짜의 객실 상태와 가격을 불러옵니다.</p>
+        <p class="section-desc api-note">기본 API 주소는 <strong>http://localhost:3000</strong> 입니다. 다른 주소를 쓰려면 <code>window.RESERVATION_API_BASE</code> 를 먼저 지정하면 됩니다.</p>
+      </div>
+
+      <section class="reservation-calendar-box">
+        <div class="calendar-head">
+          <button type="button" class="calendar-nav" data-calendar-prev aria-label="이전 달">‹</button>
+          <h2 data-calendar-title>2026년 4월</h2>
+          <button type="button" class="calendar-nav" data-calendar-next aria-label="다음 달">›</button>
+        </div>
+        <div class="calendar-weekdays">
+          <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+        </div>
+        <div class="calendar-grid" data-calendar-grid></div>
+      </section>
+
+      <section class="room-select-box">
+        <div class="room-select-head">
+          <div>
+            <h2>선택 가능한 객실</h2>
+            <p data-selected-date-text>날짜를 먼저 선택해 주세요.</p>
+          </div>
+          <div class="reservation-note-badge" data-api-status>DB 대기</div>
+        </div>
+        <div class="reservation-room-grid" data-room-list>
+          <div class="empty-state">달력에서 날짜를 선택하면 객실 카드가 이 영역에 표시됩니다.</div>
+        </div>
+      </section>
+
+      <aside class="reservation-summary-box" data-reservation-panel>
+        <div class="summary-placeholder">
+          <h2>예약 요약</h2>
+          <p>객실을 선택하면 작은 예약 화면이 표시됩니다.</p>
+          <p>이미지, 기본 가격, 인원 선택 드롭메뉴, 인원 추가에 따른 금액 변동이 이 영역에 나타납니다.</p>
+        </div>
+
+        <div class="summary-content" hidden>
+          <img src="" alt="선택한 객실 이미지" data-summary-image />
+          <div class="summary-body">
+            <span class="summary-chip" data-summary-date></span>
+            <h3 data-summary-title></h3>
+            <p class="summary-capacity" data-summary-capacity></p>
+            <p class="summary-season" data-summary-season></p>
+            <div class="price-box">
+              <div>
+                <span class="label">기본 금액</span>
+                <strong data-summary-base-price></strong>
+              </div>
+              <div>
+                <span class="label">최종 금액</span>
+                <strong data-summary-total-price></strong>
+              </div>
+            </div>
+
+            <label class="guest-select-label" for="guestCount">이용 인원</label>
+            <select id="guestCount" data-guest-select></select>
+            <p class="price-guide">기준 인원 초과부터 1명당 10,000원이 추가됩니다.</p>
+            <button type="button" class="btn reserve-action-btn" data-open-reservation-detail>예약 정보 입력 단계로 이동</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 surakzanjan. All rights reserved.</div>
+  </footer>
+
+
+
+  <div class="reservation-detail-modal" data-reservation-detail-modal hidden>
+    <div class="reservation-detail-backdrop" data-close-reservation-detail></div>
+    <div class="reservation-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="reservationDetailTitle">
+      <button type="button" class="reservation-detail-close" data-close-reservation-detail aria-label="닫기">×</button>
+      <span class="reservation-detail-chip">입금 안내</span>
+      <h2 id="reservationDetailTitle">예약 정보 확인 및 저장</h2>
+      <p class="reservation-detail-desc">선택한 날짜와 객실 정보를 확인한 뒤 예약자 정보를 입력해 주세요.</p>
+
+      <div class="reservation-detail-grid">
+        <div class="detail-row">
+          <span>선택 날짜</span>
+          <strong data-detail-date>-</strong>
+        </div>
+        <div class="detail-row">
+          <span>선택 객실</span>
+          <strong data-detail-room>-</strong>
+        </div>
+        <div class="detail-row">
+          <span>이용 인원</span>
+          <strong data-detail-guests>-</strong>
+        </div>
+        <div class="detail-row total-row">
+          <span>최종 가격</span>
+          <strong data-detail-total>-</strong>
+        </div>
+      </div>
+
+      <div class="deposit-info-box">
+        <div>
+          <span class="deposit-label">입금 계좌번호</span>
+          <strong data-detail-account>농협 123-4567-8901-23</strong>
+        </div>
+        <div>
+          <span class="deposit-label">문의 전화번호</span>
+          <strong data-detail-phone>010-7400-1321</strong>
+        </div>
+      </div>
+
+      <form class="reservation-form" data-reservation-form>
+        <label>
+          <span>예약자 이름</span>
+          <input type="text" name="guestName" required maxlength="100" placeholder="예: 홍길동" />
+        </label>
+        <label>
+          <span>전화번호</span>
+          <input type="tel" name="phoneNumber" required maxlength="30" placeholder="예: 010-1234-5678" />
+        </label>
+        <label>
+          <span>입금자명</span>
+          <input type="text" name="depositorName" required maxlength="100" placeholder="예: 홍길동" />
+        </label>
+        <p class="reservation-form-message" data-reservation-form-message>3시간 안에 입금하지 않으면 자동예약취소됩니다.</p>
+        <div class="reservation-detail-actions">
+          <button type="button" class="btn secondary-detail-btn" data-close-reservation-detail>닫기</button>
+          <button type="submit" class="btn" data-submit-reservation>예약하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>예다움사랑채 | 부대시설 안내</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="assets/logo.png" alt="surakzanjan.com 로고" /></a>
+      <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+      <nav class="main-nav">
+        <a href="index.html">홈</a>
+        <a href="rooms.html">객실안내</a>
+        <a href="facilities.html" class="active">부대시설 안내</a>
+        <a href="cafe.html">수락잔잔 카페</a>
+        <a href="breakfast.html">조식세트 안내</a>
+        <a href="reservation.html">객실예약</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">부대시설 안내</h1>
+      <p class="section-desc">썸네일 없이 큰 사진만 순서대로 넘기는 방식입니다. 다음 버튼을 누르면 총 9장의 사진이 순서대로 표시됩니다.</p>
+
+      <section class="facility-gallery-section section">
+        <div class="container">
+          <div class="gallery-main room-slider facility-slider">
+            <button class="gallery-arrow prev" type="button" aria-label="이전 사진" data-facility-prev>‹</button>
+
+            <img src="assets/facility/facility1.jpg" alt="부대시설 사진" data-facility-main />
+
+            <button class="gallery-arrow next" type="button" aria-label="다음 사진" data-facility-next>›</button>
+
+            <div class="gallery-caption" data-facility-caption>부대시설 사진 설명</div>
+            <div class="gallery-counter" data-facility-counter>1 / 9</div>
+          </div>
+        </div>
+      </section>
+      
+        <div class="facility-image-data" hidden
+          data-images='[
+            {"src":"assets/pension/view4.jpg","title":"수락계곡","desc":"물놀이 하기 좋은 수락계곡."},
+            {"src":"assets/pension/view3.jpg","title":"전기차충전설비","desc":"전기차도 충전 걱정없습니다."},
+            {"src":"assets/pension/view5.jpg","title":"애견동반가능","desc":"우리 아이들도 뛰어놀 수 있어요."},
+            {"src":"assets/pension/view2.jpg","title":"골프숏게임체험","desc":"라운딩의 재미를 느껴보세요."},
+            {"src":"assets/pension/view7.jpg","title":"탁구장","desc":"밥먹기 전 가볍게 내기 한 판."},
+            {"src":"assets/pension/view8.jpg","title":"카약체험","desc":"수락저수지의 전경을 물 위에서 느껴보세요."},
+            {"src":"assets/pension/view9.jpg","title":"패들보트 체험","desc":"저수지에서 체험하는 수상레저."},
+            {"src":"assets/pension/view6.jpg","title":"대형노래방","desc":"노래방 시설 완비."},
+            {"src":"assets/pension/view10.jpg","title":"노래방 내부사진","desc":"넓은 공간 완비."}
+          ]'>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <img src="" alt="확대 이미지" />
+      <div class="modal-body">
+        <h3 data-modal-title></h3>
+        <p data-modal-desc></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">© 2026 surakzanjan. All rights reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

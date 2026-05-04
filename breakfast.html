@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>예다움사랑채 | 조식세트 안내</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="assets/logo.png" alt="surakzanjan.com 로고" /></a>
+      <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+      <nav class="main-nav">
+        <a href="index.html">홈</a>
+        <a href="rooms.html">객실안내</a>
+        <a href="facilities.html">부대시설 안내</a>        
+        <a href="cafe.html">수락잔잔 카페</a>
+        <a href="breakfast.html" class="active">조식세트 안내</a>
+        <a href="reservation.html">객실예약</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">조식세트 & 바비큐 안내</h1>
+      <p class="section-desc">클릭하면 큰 이미지로 상세하게 볼 수 있습니다.</p>
+
+      <div class="breakfast-grid">
+        <article class="card" data-modal-image data-image="assets/food2.jpg" data-title="바비큐 Set" data-desc="돼지고기, 소세지, 쌈채소, 쌈장.">
+          <img src="assets/food1.jpg" alt="바비큐 세트" />
+          <div class="body">
+            <h3>바비큐 Set</h3>
+            <p>돼지고기 500g / 소세지 / 쌈채소 / 야채 샐러드 / 밑반찬</p>
+          </div>
+        </article>
+        <article class="card" data-modal-image data-image="assets/bftoast.png" data-title="조식 (프렌치토스트)" data-desc="잉글리쉬 스타일 브런치.">
+          <img src="assets/bftoast.png" alt="프렌치토스트 조식" />
+          <div class="body">
+            <h3>조식 (프렌치토스트)</h3>
+            <p>토스트, 샐러드, 과일, 커피 또는 차</p>
+          </div>
+        </article>
+        <article class="card" data-modal-image data-image="assets/bfnrg.png" data-title="조식 (누룽지탕)" data-desc="따뜻한 누룽지탕과 반찬.">
+          <img src="assets/bfnrg.png" alt="누룽지탕 조식" />
+          <div class="body">
+            <h3>조식 (누룽지탕)</h3>
+            <p>누룽지탕, 반찬</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <img src="" alt="확대 이미지" />
+      <div class="modal-body">
+        <h3 data-modal-title></h3>
+        <p data-modal-desc></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">© 2026 surakzanjan. All rights reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
