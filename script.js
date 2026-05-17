@@ -588,7 +588,7 @@ function initAdminPage() {
   const page = document.querySelector('[data-admin-page]');
   if (!page) return;
 
-  const API_BASE = window.RESERVATION_API_BASE || 'http://localhost:3000';
+  const API_BASE = window.RESERVATION_API_BASE || '';
   const loginModal = document.querySelector('[data-admin-login-modal]');
   const loginForm = document.querySelector('[data-admin-login-form]');
   const loginMessage = document.querySelector('[data-admin-login-message]');
