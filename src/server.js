@@ -6,6 +6,14 @@ const { pool } = require('./db');
 
 const ROOT_DIR = path.join(__dirname, '..');
 
+const app = express();
+const PORT = Number(process.env.PORT || 3000);
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';
+
+app.use(cors({ origin: ALLOWED_ORIGIN === '*' ? true : ALLOWED_ORIGIN }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '..')));
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(ROOT_DIR, 'index.html'));
 });
@@ -33,14 +41,6 @@ app.get('/reservation', (req, res) => {
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(ROOT_DIR, 'admin.html'));
 });
-
-const app = express();
-const PORT = Number(process.env.PORT || 3000);
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';
-
-app.use(cors({ origin: ALLOWED_ORIGIN === '*' ? true : ALLOWED_ORIGIN }));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '..')));
 
 function isValidMonth(input) {
   return /^\d{4}-\d{2}$/.test(input || '');
