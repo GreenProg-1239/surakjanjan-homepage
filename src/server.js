@@ -4,6 +4,36 @@ const cors = require('cors');
 const path = require('path');
 const { pool } = require('./db');
 
+const ROOT_DIR = path.join(__dirname, '..');
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'index.html'));
+});
+
+app.get('/rooms', (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'rooms.html'));
+});
+
+app.get('/facilities', (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'facilities.html'));
+});
+
+app.get('/cafe', (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'cafe.html'));
+});
+
+app.get('/breakfast', (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'breakfast.html'));
+});
+
+app.get('/reservation', (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'reservation.html'));
+});
+
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'admin.html'));
+});
+
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';
@@ -11,10 +41,6 @@ const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';
 app.use(cors({ origin: ALLOWED_ORIGIN === '*' ? true : ALLOWED_ORIGIN }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..')));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
-});
 
 function isValidMonth(input) {
   return /^\d{4}-\d{2}$/.test(input || '');
@@ -227,8 +253,12 @@ app.post('/api/reservations', async (req, res, next) => {
 
 
 const crypto = require('crypto');
-const ADMIN_ID = process.env.ADMIN_ID || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '1234';
+const ADMIN_ID = process.env.ADMIN_ID;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+if (!ADMIN_ID || !ADMIN_PASSWORD) {
+  throw new Error('ADMIN_ID 또는 ADMIN_PASSWORD 환경변수가 설정되지 않았습니다.');
+}
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || crypto.createHash('sha256').update(`${ADMIN_ID}:${ADMIN_PASSWORD}:admin`).digest('hex');
 
 function requireAdmin(req, res, next) {
