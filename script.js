@@ -758,7 +758,7 @@ function initCafeSlider() {
   const cafeSlides = [
     {
       src: 'assets/cafe/cafemain.jpg',
-      eyebrow: 'surakzanjan cafe',
+      eyebrow: 'surakzanzan cafe',
       title: '수락잔잔 카페',
       desc: '펜션 내 카페 공간에서 핸드드립 커피와 간단한 디저트를 즐길 수 있습니다. 풍경을 보며 쉬어갈 수 있는 조용한 휴식 공간을 지향합니다.'
     },
