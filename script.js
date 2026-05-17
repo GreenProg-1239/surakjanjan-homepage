@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReservationLayout();
   initFacilitiesGallery();
   initModalGallery();
+  initCafeSlider();
   initAdminPage();
 });
 
@@ -741,4 +742,71 @@ function initAdminPage() {
   if (hasToken) {
     loadReservations();
   }
+}
+
+function initCafeSlider() {
+  const main = document.querySelector('[data-cafe-main]');
+  const prevBtn = document.querySelector('[data-cafe-prev]');
+  const nextBtn = document.querySelector('[data-cafe-next]');
+  const counter = document.querySelector('[data-cafe-counter]');
+  const eyebrow = document.querySelector('[data-cafe-eyebrow]');
+  const title = document.querySelector('[data-cafe-title]');
+  const desc = document.querySelector('[data-cafe-desc]');
+
+  if (!main || !prevBtn || !nextBtn) return;
+
+  const cafeSlides = [
+    {
+      src: 'assets/cafe/cafemain.jpg',
+      eyebrow: 'surakzanjan cafe',
+      title: '수락잔잔 카페',
+      desc: '펜션 내 카페 공간에서 핸드드립 커피와 간단한 디저트를 즐길 수 있습니다. 풍경을 보며 쉬어갈 수 있는 조용한 휴식 공간을 지향합니다.'
+    },
+    {
+      src: 'assets/cafe/cafe2.jpg',
+      eyebrow: 'healing space',
+      title: '자연 속 휴식 공간',
+      desc: '카페 창밖으로 보이는 자연 풍경과 함께, 조용히 머무를 수 있는 따뜻한 공간으로 구성했습니다.'
+    },
+    {
+      src: 'assets/cafe/cafe3.jpg',
+      eyebrow: 'signature menu',
+      title: '커피와 디저트',
+      desc: '계절에 따라 메뉴를 조정하며, 시그니처 음료와 디저트를 통해 편안한 분위기를 전달합니다.'
+    }
+  ];
+
+  let currentIndex = 0;
+
+  function renderCafeSlide() {
+    const item = cafeSlides[currentIndex];
+    main.src = item.src;
+    main.alt = item.title;
+
+    if (counter) {
+      counter.textContent = `${currentIndex + 1} / ${cafeSlides.length}`;
+    }
+
+    if (eyebrow) eyebrow.textContent = item.eyebrow;
+    if (title) title.textContent = item.title;
+    if (desc) desc.textContent = item.desc;
+  }
+
+  prevBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    currentIndex = (currentIndex - 1 + cafeSlides.length) % cafeSlides.length;
+    renderCafeSlide();
+  });
+
+  nextBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    currentIndex = (currentIndex + 1) % cafeSlides.length;
+    renderCafeSlide();
+  });
+
+  main.addEventListener('click', () => {
+    openModal(main.src, title ? title.textContent : '카페 이미지', desc ? desc.textContent : '');
+  });
+
+  renderCafeSlide();
 }
