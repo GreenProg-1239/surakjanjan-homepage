@@ -888,6 +888,7 @@ body.modal-open {
   display: grid;
   place-items: center;
   padding: 24px;
+  overflow-y: auto;
 }
 
 .reservation-detail-backdrop {
@@ -899,6 +900,8 @@ body.modal-open {
 .reservation-detail-dialog {
   position: relative;
   width: min(640px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 26px;
@@ -1006,8 +1009,16 @@ body.modal-open {
 }
 
 @media (max-width: 760px) {
+  .reservation-detail-modal {
+    padding: 12px;
+    align-items: start;
+  }
+
   .reservation-detail-dialog {
+    width: 100%;
+    max-height: calc(100vh - 24px);
     padding: 24px 20px;
+    margin-top: 12px;
   }
 
   .detail-row,
