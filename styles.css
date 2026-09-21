@@ -1416,6 +1416,8 @@ body.modal-open {
 
   .admin-filter-row {
     grid-template-columns: 1fr;
+      }
+}
 
 .cafe-menu-images {
   display: flex;
