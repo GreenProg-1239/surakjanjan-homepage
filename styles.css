@@ -1404,5 +1404,31 @@ body.modal-open {
 
   .admin-filter-row {
     grid-template-columns: 1fr;
+
+.cafe-menu-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.cafe-menu-images a {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+}
+
+.cafe-menu-images img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 760px) {
+  .cafe-menu-images {
+    gap: 16px;
   }
 }
